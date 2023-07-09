@@ -9,8 +9,6 @@ w
 G.idea/sonarlint/issuestore/2/a/2afbb999f001938c88fa43fc2ef52abf0f8213e4,5\1\516e730a14e71f02fa73f3acd6dc7cea9a9fe002
 
 Q.idea/sonarlint/securityhotspotstore/2/a/2afbb999f001938c88fa43fc2ef52abf0f8213e4,a\8\a8a52112049d840217cfa586a3a399d9502f9b94
-P
- app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
 >
 .api/README.md,4\f\4fe900a98fac50b35b7f670b7c38b62a2a6f55b6
 w
