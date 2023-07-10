@@ -12,15 +12,11 @@ Q.idea/sonarlint/securityhotspotstore/2/a/2afbb999f001938c88fa43fc2ef52abf0f8213
 >
 .api/README.md,4\f\4fe900a98fac50b35b7f670b7c38b62a2a6f55b6
 w
-G.idea/sonarlint/issuestore/8/c/8c55c3ccc257e5907959013f99656e4c8ec3903e,3\2\32813322c99a6c8a141ab2dc12bc10af3425f1b4
-w
 G.idea/sonarlint/issuestore/8/8/88a9255124c95bdc913197c120a8d560edc59c8e,a\e\ae9ddf453f55affea2d6b9e3973cac1eb2efb4e1
 
 Q.idea/sonarlint/securityhotspotstore/a/8/a8a52112049d840217cfa586a3a399d9502f9b94,3\f\3ffc2b35597dce786ee8a1cc51b1cd1ce2cea9ce
 
 Q.idea/sonarlint/securityhotspotstore/8/8/88a9255124c95bdc913197c120a8d560edc59c8e,9\0\909762385fc6eb20f922a91c6865741308b57f2c
-
-Q.idea/sonarlint/securityhotspotstore/8/c/8c55c3ccc257e5907959013f99656e4c8ec3903e,1\f\1fe398aa86b382486ed27d0a69bf92f68bd5edaa
 
 Q.idea/sonarlint/securityhotspotstore/9/f/9fe84ebb15faf917b7def6236dba604453cc61e0,b\b\bbf202272a96de5cd6b6828ffdc55fb3ce45289c
 w
@@ -33,3 +29,10 @@ w
 G.idea/sonarlint/issuestore/9/f/9fe84ebb15faf917b7def6236dba604453cc61e0,f\0\f0e0f9cec86fe4b939ae22be5264c758801eb28f
 >
 app/.gitignore,5\1\51e1c5d383dfaa35e0e7e5873a0a99355a86880f
+:
+
+.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
+x
+Happ/src/main/java/br/com/alura/estoque/http/services/ProductService.java,3\7\3733532fe24f48bea70466e12d986c77a74e0fa0
+@
+app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164

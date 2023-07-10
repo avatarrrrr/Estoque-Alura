@@ -15,6 +15,7 @@ import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import br.com.alura.estoque.R;
 import br.com.alura.estoque.model.Produto;
 
@@ -57,6 +58,7 @@ public class ListaProdutosAdapter extends
     }
 
     public void atualiza(List<Produto> produtos) {
+        notifyItemRangeRemoved(0, produtos.size());
         this.produtos.clear();
         this.produtos.addAll(produtos);
         this.notifyItemRangeInserted(0, this.produtos.size());
