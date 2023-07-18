@@ -15,7 +15,7 @@ import br.com.alura.estoque.model.Produto;
 public interface ProdutoDAO {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    long salva(Produto produto);
+    long save(Produto produto);
 
     @Update
     void atualiza(Produto produto);
@@ -24,7 +24,7 @@ public interface ProdutoDAO {
     List<Produto> buscaTodos();
 
     @Query("SELECT * FROM Produto WHERE id = :id")
-    Produto buscaProduto(long id);
+    Produto findProductById(long id);
 
     @Delete
     void remove(Produto produto);

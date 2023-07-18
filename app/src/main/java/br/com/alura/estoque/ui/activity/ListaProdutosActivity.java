@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.List;
+
 import br.com.alura.estoque.R;
 import br.com.alura.estoque.asynctask.BaseAsyncTask;
 import br.com.alura.estoque.database.EstoqueDatabase;
@@ -38,11 +40,21 @@ public class ListaProdutosActivity extends AppCompatActivity {
         dao = db.getProdutoDAO();
         repository = new ProductRepository(dao);
 
-        buscaProdutos();
+        findProducts();
     }
 
-    private void buscaProdutos() {
-        repository.searchProductsOnInternalStorage(produtos -> adapter.atualiza(produtos));
+    private void findProducts() {
+        repository.searchProducts(new ProductRepository.ProductRepositoryListener<List<Produto>>() {
+            @Override
+            public void onSuccess(List<Produto> data) {
+                adapter.atualiza(data);
+            }
+
+            @Override
+            public void onError(String message) {
+                Toast.makeText(ListaProdutosActivity.this, message, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void configuraListaProdutos() {
@@ -65,7 +77,7 @@ public class ListaProdutosActivity extends AppCompatActivity {
     }
 
     private void abreFormularioSalvaProduto() {
-        new SalvaProdutoDialog(this, produto -> repository.save(produto, new ProductRepository.ListenerOnSuccessAndOnError<Produto>() {
+        new SalvaProdutoDialog(this, produto -> repository.save(produto, new ProductRepository.ProductRepositoryListener<Produto>() {
             @Override
             public void onSuccess(Produto data) {
                 adapter.adiciona(data);
@@ -84,15 +96,18 @@ public class ListaProdutosActivity extends AppCompatActivity {
         })).mostra();
     }
 
-    private void abreFormularioEditaProduto(int posicao, Produto produto) {
-        new EditaProdutoDialog(this, produto, produtoEditado -> edita(posicao, produtoEditado)).mostra();
-    }
+    private void abreFormularioEditaProduto(int position, Produto produto) {
+        new EditaProdutoDialog(this, produto, productEdited -> repository.edit(productEdited, new ProductRepository.ProductRepositoryListener<Produto>() {
+            @Override
+            public void onSuccess(Produto data) {
+                adapter.edita(position, data);
+            }
 
-    private void edita(int posicao, Produto produto) {
-        new BaseAsyncTask<>(() -> {
-            dao.atualiza(produto);
-            return produto;
-        }, produtoEditado -> adapter.edita(posicao, produtoEditado)).execute();
+            @Override
+            public void onError(String message) {
+                Toast.makeText(ListaProdutosActivity.this, message, Toast.LENGTH_SHORT).show();
+            }
+        })).mostra();
     }
 
 

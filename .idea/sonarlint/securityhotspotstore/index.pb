@@ -88,3 +88,11 @@ Q.idea/sonarlint/securityhotspotstore/9/9/99437a72e53e3372cda2bff4e9e442b296b81b
 Xapp/src/main/java/br/com/alura/estoque/ui/recyclerview/adapter/ListaProdutosAdapter.java,5\3\5339c771f2db9fbac5c64d60e355698efd176178
 v
 Fapp/src/main/java/br/com/alura/estoque/http/RetrofitHttpSingleton.java,b\7\b7f80f822d8734501c00f4ab8c5a044bebcc13eb
+x
+Happ/src/main/java/br/com/alura/estoque/http/services/ProductService.java,3\7\3733532fe24f48bea70466e12d986c77a74e0fa0
+s
+Capp/src/main/java/br/com/alura/estoque/database/dao/ProdutoDAO.java,2\f\2f6923cc9f52cc7c76718ca44ca9fe984b343331
+x
+Happ/src/main/java/br/com/alura/estoque/repository/ProductRepository.java,5\2\529a6046ce04eef89d59c4824c3c9f66390c356a
+}
+Mapp/src/main/java/br/com/alura/estoque/ui/activity/ListaProdutosActivity.java,3\e\3e6a39d22e7f40a50fe9ed17fdaa405cc2784fd0
