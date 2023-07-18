@@ -14,7 +14,7 @@ import br.com.alura.estoque.model.Produto;
 @Dao
 public interface ProdutoDAO {
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     long salva(Produto produto);
 
     @Update

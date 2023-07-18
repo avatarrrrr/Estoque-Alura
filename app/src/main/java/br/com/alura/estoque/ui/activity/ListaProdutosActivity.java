@@ -1,6 +1,7 @@
 package br.com.alura.estoque.ui.activity;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,6 +23,7 @@ public class ListaProdutosActivity extends AppCompatActivity {
     private static final String TITULO_APPBAR = "Lista de produtos";
     private ListaProdutosAdapter adapter;
     private ProdutoDAO dao;
+    private ProductRepository repository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,13 +36,13 @@ public class ListaProdutosActivity extends AppCompatActivity {
 
         EstoqueDatabase db = EstoqueDatabase.getInstance(this);
         dao = db.getProdutoDAO();
+        repository = new ProductRepository(dao);
 
         buscaProdutos();
     }
 
     private void buscaProdutos() {
-        ProductRepository repository = new ProductRepository(dao);
-        repository.searchProductsOnInternalStorage(adapter::atualiza);
+        repository.searchProductsOnInternalStorage(produtos -> adapter.atualiza(produtos));
     }
 
     private void configuraListaProdutos() {
@@ -63,14 +65,23 @@ public class ListaProdutosActivity extends AppCompatActivity {
     }
 
     private void abreFormularioSalvaProduto() {
-        new SalvaProdutoDialog(this, this::salva).mostra();
-    }
+        new SalvaProdutoDialog(this, produto -> repository.save(produto, new ProductRepository.ListenerOnSuccessAndOnError<Produto>() {
+            @Override
+            public void onSuccess(Produto data) {
+                adapter.adiciona(data);
+            }
 
-    private void salva(Produto produto) {
-        new BaseAsyncTask<>(() -> {
-            long id = dao.salva(produto);
-            return dao.buscaProduto(id);
-        }, produtoSalvo -> adapter.adiciona(produtoSalvo)).execute();
+            @Override
+            public void onError(String message) {
+                Toast
+                        .makeText(
+                                ListaProdutosActivity.this,
+                                ListaProdutosActivity.this.getText(R.string.lista_produtos_activity_error_save_message),
+                                Toast.LENGTH_SHORT
+                        )
+                        .show();
+            }
+        })).mostra();
     }
 
     private void abreFormularioEditaProduto(int posicao, Produto produto) {

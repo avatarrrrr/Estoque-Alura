@@ -5,4 +5,5 @@
     <string name="quantidade">Quantidade</string>
     <string name="remove">Remove</string>
     <string name="list_produtos_activity_error_search_products_message">Failed on catch products online, using internal storage.</string>
+    <string name="lista_produtos_activity_error_save_message">Houve um erro ao salvar!</string>
 </resources>
